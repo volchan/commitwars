@@ -34,6 +34,25 @@ html, body {
   p {
     font-size: 20px;
   }
+  .form-inputs {
+    display: flex;
+    .teams {
+      flex: 1 1 auto;
+      padding: 10px;
+      .form-group {
+        margin-bottom: 2px;
+        .top-input {
+          border-radius: 4px 4px 0 0;
+        }
+        .bottom-input {
+          border-radius: 0 0 4px 4px;
+        }
+      }
+    }
+  }
+  .war-btn {
+    padding: 10px;
+  }
 }
 
 #footer {
