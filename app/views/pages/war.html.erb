@@ -1,0 +1,12 @@
+
+<% @first_repo.each do |stats| %>
+  <%= stats.author.login %>
+  <%= image_tag stats.author.avatar_url %>
+  <%= stats.total %>
+<% end %>
+<hr>
+<% @second_repo.each do |stats| %>
+  <%= stats.author.login %>
+  <%= image_tag stats.author.avatar_url %>
+  <%= stats.total %>
+<% end %>
