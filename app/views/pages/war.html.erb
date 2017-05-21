@@ -1,12 +1,29 @@
-
-<% @first_repo.each do |stats| %>
-  <%= stats.author.login %>
-  <%= image_tag stats.author.avatar_url %>
-  <%= stats.total %>
-<% end %>
-<hr>
-<% @second_repo.each do |stats| %>
-  <%= stats.author.login %>
-  <%= image_tag stats.author.avatar_url %>
-  <%= stats.total %>
-<% end %>
+<div id="war-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <div class="header">
+          <%= image_tag 'logo.svg', id: 'logo-war'%>
+          <h3>Commit Wars</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-2">
+        <div class="result-team-one text-center"></div>
+        <%= render 'card', repo: @first_repo, owner: @team_one.username, repo_name: @team_one.repository, team: 'team-one' %>
+      </div>
+      <div class="col-sm-4">
+        <div class="result-team-two text-center"></div>
+        <%= render 'card', repo: @second_repo, owner: @team_two.username, repo_name: @team_two.repository, team: 'team-two' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <div id="home-btn">
+          <%= link_to 'New War !', root_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

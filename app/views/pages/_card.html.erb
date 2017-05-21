@@ -1,0 +1,34 @@
+<div class="card <%= team %>">
+  <div class="team text-center">
+    <h1>Team</h1>
+    <h1><%= repo_name.split('-').join(' ') %></h1>
+  </div>
+  <div class="repo-infos">
+    <div class="owner text-center">
+      <h3>Owner</h3>
+      <div class="owner-photo">
+        <%= image_tag find_owner(repo, owner).author.avatar_url, class: 'avatar-square-lg' %>
+        <%= link_to '', "https://github.com/#{find_owner(repo, owner).author.login}" %>
+      </div>
+      <p><%= find_owner(repo, owner).author.login %></p>
+    </div>
+    <div class="commits text-center">
+      <h3>Total commits</h3>
+      <div class="commits-total">
+        <p><%= compute_commits(repo) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="contributors">
+    <% repo.each do |stats| %>
+      <div class="author">
+        <div class="contributor-photo">
+          <%= image_tag stats.author.avatar_url, class: 'avatar-square' %>
+          <%= link_to '', "https://github.com/#{stats.author.login}" %>
+        </div>
+        <p><%= stats.author.login %></p>
+        <p><%= stats.total %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

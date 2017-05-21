@@ -1,4 +1,30 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+#home {
+  min-height: 100%;
+  height: auto;
+  margin-bottom: -60px;
+  display: flex;
+  align-items: center;
+  text-shadow: 1px 0px 5px rgba(0, 0, 0, 0.25);
+  p {
+    font-size: 20px;
+  }
+  .form-inputs {
+    display: flex;
+    .teams {
+      flex: 1 1 auto;
+      padding: 10px;
+      .form-group {
+        margin-bottom: 2px;
+        .top-input {
+          border-radius: 4px 4px 0 0;
+        }
+        .bottom-input {
+          border-radius: 0 0 4px 4px;
+        }
+      }
+    }
+  }
+  .war-btn {
+    padding: 10px;
+  }
+}

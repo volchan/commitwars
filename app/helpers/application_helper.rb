@@ -1,8 +1,12 @@
 module ApplicationHelper
-  require 'open-uri'
 
-  def github_api_parser(attributes)
-    json_string = open("https://api.github.com/repos/#{attributes[:username]}/#{attributes[:repo]}/commits").read
-    JSON.parse(json_string)
+  def find_owner(repo, owner_name)
+    repo.each.find { |i| i.author.login == owner_name }
+  end
+
+  def compute_commits(repo)
+    total_commits = 0
+    repo.each { |contributor| total_commits += contributor.total  }
+    total_commits
   end
 end
