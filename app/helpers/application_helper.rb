@@ -9,4 +9,14 @@ module ApplicationHelper
     repo.each { |contributor| total_commits += contributor.total  }
     total_commits
   end
+
+  def render_navbar
+    render 'shared/navbar' unless is_home
+  end
+
+  private
+
+  def is_home
+    controller_name == "pages" && action_name == "home"
+  end
 end
