@@ -1,31 +1,49 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8 col-sm-offset-2 text-center">
-        <%= image_tag 'logo.svg', id: 'logo'%>
-        <h1>Commit Wars</h1>
-      </div>
-    </div>
-    <%= simple_form_for :war, url: war_path, method: :get do |f| %>
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <div class="form-inputs">
-            <div class="teams">
-              <p>First team :</p>
-              <%= f.input :github_username_one, as: :string, label: false, placeholder: 'Owner username', input_html: {class: 'top-input'} %>
-              <%= f.input :repository_one, as: :string, label: false, placeholder: 'Repository', input_html: {class: 'bottom-input'} %>
-            </div>
-            <div class="teams">
-              <p>Second team :</p>
-              <%= f.input :github_username_two, as: :string, label: false, placeholder: 'Owner username', input_html: {class: 'top-input'} %>
-              <%= f.input :repository_two, as: :string, label: false, placeholder: 'Repository', input_html: {class: 'bottom-input'} %>
-            </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Commit Wars</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+  <body>
+    <div id="home">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <%= image_tag 'logo.svg', id: 'logo'%>
+            <h1>Commit Wars</h1>
           </div>
         </div>
-        <div class="col-sm-8 col-sm-offset-2 text-center war-btn">
-          <%= f.submit 'Start war !', class: 'btn btn-lg btn-primary' %>
-        </div>
+        <%= simple_form_for :war, url: war_path, method: :get do |f| %>
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <%= render 'shared/flashes' %>
+              <div class="form-inputs">
+                <div class="teams">
+                  <p>First team :</p>
+                  <%= f.input :github_username_one, as: :string, label: false, placeholder: 'Owner username', input_html: {class: 'top-input'} %>
+                  <%= f.input :repository_one, as: :string, label: false, placeholder: 'Repository', input_html: {class: 'bottom-input'} %>
+                </div>
+                <div class="teams">
+                  <p>Second team :</p>
+                  <%= f.input :github_username_two, as: :string, label: false, placeholder: 'Owner username', input_html: {class: 'top-input'} %>
+                  <%= f.input :repository_two, as: :string, label: false, placeholder: 'Repository', input_html: {class: 'bottom-input'} %>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2 text-center war-btn">
+              <%= f.submit 'Start war !', class: 'btn btn-lg btn-primary' %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+    <%= render 'shared/footer' %>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

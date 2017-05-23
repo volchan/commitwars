@@ -11,12 +11,12 @@ module ApplicationHelper
   end
 
   def render_navbar
-    render 'shared/navbar' unless is_home
+    render 'shared/navbar' if is_war
   end
 
   private
 
-  def is_home
-    controller_name == "pages" && action_name == "home"
+  def is_war
+    controller_name == "pages" && action_name == "war"
   end
 end
